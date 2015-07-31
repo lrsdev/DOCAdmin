@@ -4,7 +4,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'activeadmin', github: 'activeadmin'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
 gem 'sqlite3'
+gem 'pg'
+gem 'activerecord-postgis-adapter', '3.0.0.beta5'
+gem 'devise'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
