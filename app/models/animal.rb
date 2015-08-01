@@ -1,6 +1,10 @@
 class Animal < ActiveRecord::Base
-  has_many :animal_locations
-  has_many :animals, :through => :animal_locations
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :blurb, presence: true, length: { maximum: 140 }
+  validates :guidelines, presence: true, length: { maximum: 140 }
+  validates :target, presence: true
+  validates :ext_url, presence: true
+
   has_many :reports
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
