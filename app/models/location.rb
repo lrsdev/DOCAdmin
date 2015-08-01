@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
-  has_many :reports
-  has_many :dog_statuses
+  has_many :reports, :dependent => :destroy
+  has_many :dog_statuses, :dependent => :destroy
   accepts_nested_attributes_for :dog_statuses
   has_many :accesses
   validates :name, :presence => true
