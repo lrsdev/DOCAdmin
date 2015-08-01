@@ -1,9 +1,5 @@
 class AddImageColumnsToReport < ActiveRecord::Migration
-  def up
+  def change
     add_attachment :reports, :image
-  end
-
-  def down
-    remove_attachment :reports, :image
   end
 end
