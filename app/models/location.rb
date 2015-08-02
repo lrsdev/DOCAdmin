@@ -1,4 +1,6 @@
 class Location < ActiveRecord::Base
+  attr_accessor :latitude, :longitude
+
   has_many :reports, :dependent => :destroy
   has_many :dog_statuses, :dependent => :destroy
   accepts_nested_attributes_for :dog_statuses

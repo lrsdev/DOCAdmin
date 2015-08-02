@@ -2,42 +2,48 @@ ActiveAdmin.register Location do
   filter :name
   filter :dog_statuses
 
-  permit_params :id, :category, :name, :blurb, :geolocation, :image,
-    dog_statuses_attributes: [:id, :location_id, :status, :guidelines]
+  permit_params :category, :name, :animal_blurb, :image, :latitude, :longitude,
+    dog_statuses_attributes: [:location_id, :status, :guidelines]
+
+  before_create do |l|
+    l.geolocation = RGeo::Geographic.spherical_factory(:srid => 4326).point(l.longitude, l.latitude)
+  end
 
   index do
     column :category
     column :name
-    column :blurb
-    column "Latitude" do |location|
-      location.geolocation.y
-    end
-    column "Longitude" do |location|
-      location.geolocation.x
-    end
     column "Dog Status" do |location|
       location.dog_statuses.last.status
     end
     actions 
   end
 
+  sidebar "Dog Status", only: [:show, :delete] do
+    ul do
+      li link_to "Statuses", admin_location_dog_statuses_path(location)
+    end
+  end
+
   form do |f|
     f.inputs "Location Details" do
       f.input :name
       f.input :category, as: :select, collection: Location.categories.keys
-      f.input :blurb
-      f.input :geolocation, :as => :string
+      f.input :animal_blurb
+      if f.object.new_record?
+        f.input :latitude, :as => :number
+        f.input :longitude, :as => :number
+      else
+        f.input :latitude, :as => :number, :input_html => { :value => f.object.geolocation.y }
+        f.input :longitude, :as => :number, :input_html => { :value => f.object.geolocation.x }
+      end
       f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.url(:medium))
     end
-    f.inputs "Dog Details" do
-      f.has_many :dog_statuses do |ds|
-        if ds.object.new_record?
+
+    if f.object.new_record?
+      f.inputs "Dog Status" do
+        f.has_many :dog_statuses, allow_destroy: true do |ds|
           ds.input :status, as: :select, collection: DogStatus.statuses.keys
           ds.input :guidelines, as: :text
-        else
-          ds.input :status, as: :select, collection: DogStatus.statuses.keys
-          ds.input :guidelines, as: :text
-          ds.input :created_at, :input_html
         end
       end
     end
@@ -48,9 +54,17 @@ ActiveAdmin.register Location do
     attributes_table do
       row :name
       row :category
+      row :geolocation
+      row :animal_blurb
+      row 'Current Dog Status' do
+        l.dog_statuses.last.status
+      end
+      row 'Current Dog Guidelines' do
+        l.dog_statuses.last.guidelines
+      end
       row :image do
         image_tag l.image.url(:medium)
-        end
+      end
     end
   end
 
