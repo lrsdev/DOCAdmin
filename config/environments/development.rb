@@ -45,7 +45,8 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'dogappdevel'
+      :bucket => 'dogappdev',
+      :s3_host_name => 's3-ap-southeast-2.amazonaws.com'
     }
   }
 end

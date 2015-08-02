@@ -140,30 +140,9 @@ ActiveAdmin.setup do |config|
   #
   # config.before_filter :do_something_awesome
 
-  # == Localize Date/Time Format
-  #
-  # Set the localize format to display dates and times.
-  # To understand how to localize your app with I18n, read more at
-  # https://github.com/svenfuchs/i18n/blob/master/lib%2Fi18n%2Fbackend%2Fbase.rb#L52
-  #
-  config.localize_format = :long
-
   # == Setting a Favicon
   #
   # config.favicon = 'favicon.ico'
-
-  # == Meta Tags
-  #
-  # Add additional meta tags to the head element of active admin pages.
-  #
-  # Add tags to all pages logged in users see:
-  #   config.meta_tags = { author: 'My Company' }
-
-  # By default, sign up/sign in/recover password pages are excluded
-  # from showing up in search engine results by adding a robots meta
-  # tag. You can reset the hash of meta tags included in logged out
-  # pages:
-  #   config.meta_tags_for_logged_out_pages = {}
 
   # == Removing Breadcrumbs
   #
