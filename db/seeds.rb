@@ -34,23 +34,12 @@ Location.create(
                 animal_blurb: 'Although uncommon, you should pay specific attention to possible seals along the North Side',
                 image: open('http://ih0.redbubble.net/image.3998569.1307/flat,550x550,075,f.jpg', "r"))
 
-DogStatus.create(
-                 location_id: 1,
-                 status: 0,
-                 guidelines: 'Dogs are not allowed on the beach from the Salt Water Pool to the nearest piles on the beach to the North.')
-
-
 Location.create(
                 name: 'St Kilda', 
                 category: 0, 
                 geolocation: 'POINT(170.516194 -45.908461)',
                 animal_blurb: 'Although uncommon, you should pay specific attention to possible seals along the North Side',
                 image: open('http://images.travelpod.com/tw_slides/ta00/cb6/fd0/st-kilda-beach-dunedin-christchurch.jpg', "r"))
-
-DogStatus.create(
-                 location_id: 2,
-                 status: 1,
-                 guidelines: 'Dogs allowed off lead. Take care around rocks at the extreme North end of the beach, wildlife maye be present here.')
 
 Location.create(
                 name: 'Allans Beach',
@@ -59,11 +48,6 @@ Location.create(
                 animal_blurb: 'Although uncommon, you should pay specific attention to possible seals along the North Side',
                 image: open('http://images.fineartamerica.com/images-medium-large/allans-beach--new-zealand-czrart.jpg', "r"))
 
-DogStatus.create(
-                 location_id: 3,
-                 status: 2,
-                 guidelines: 'Dogs allowed everywhere.')
-
 Location.create(
                 name: 'Brighton Beach',
                 category: 0,
@@ -71,23 +55,12 @@ Location.create(
                 animal_blurb: 'Although uncommon, you should pay specific attention to possible seals along the North Side',
                 image: open('http://www.wallyandbarbara.com/newzealand/images4/P1040906.JPG', "r"))
 
-DogStatus.create(
-                 location_id: 4,
-                 status: 1,
-                 guidelines: 'Dogs not allowed within the bay from the Big Rock to the small cliff at the North end of the domain.')
-
-
 Location.create(
                 name: 'Tunnel Beach',
                 category: 0,
                 geolocation: 'POINT(170.459245 -45.920753)',
                 animal_blurb: 'Although uncommon, you should pay specific attention to possible seals along the North Side',
                 image: open('http://www.chrisgin.com/images/seascapes/large/TunnelBeach_1095.jpg', "r"))
-
-DogStatus.create(
-                 location_id: 5,
-                 status: 0,
-                 guidelines: 'Dogs allowed on a leash.')
 
 Report.create(location_id: 1, geolocation: 'POINT(170.489735 -45.912665)', blurb: "Spotted Yellow-Eyed Penguin playing in the surf",
              image: open('http://d1k2jfc4wnfimc.cloudfront.net/assets/matakohe/images/contentfill.jpg', "r"),
