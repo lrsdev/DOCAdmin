@@ -8,7 +8,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'sqlite3'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'pg'
-gem 'activerecord-postgis-adapter', '3.0.0.beta5'
+gem 'activerecord-postgis-adapter', '~> 3.0.0'
 gem 'devise'
 
 # Use SCSS for stylesheets
