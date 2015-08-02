@@ -100,5 +100,3 @@ Report.create(location_id: 1, geolocation: 'POINT(170.488179 -45.913587)', blurb
 Report.create(location_id: 2, geolocation: 'POINT(170.531367 -45.908496)', blurb: "Spotted Sea Lion near lookout, far North end of beach.",
              image: open('https://animalblawg.files.wordpress.com/2010/11/the-california-sea-lion.jpg', "r"),
              image_file_name: 'sealion.jpg',created_at: DateTime.now, animal_id: 3)
-
-AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
