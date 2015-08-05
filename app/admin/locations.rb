@@ -25,26 +25,39 @@ ActiveAdmin.register Location do
   end
 
   form do |f|
-    f.inputs "Location Details" do
-      f.input :name
-      f.input :category, as: :select, collection: Location.categories.keys
-      f.input :animal_blurb
-      if f.object.new_record?
+    # Display different form if we're creating a new record. Violate DRY for readability and usability.
+    # This is necessary to fox activeadmin into exhibiting the behaviour I want it to exhibit for this
+    # model
+    if f.object.new_record?
+      f.inputs "Location Details" do
+        f.input :name
+        f.input :category, as: :select, collection: Location.categories.keys
+        f.input :animal_blurb
         f.input :latitude, :as => :number
         f.input :longitude, :as => :number
-      else
+        f.input :image, :as => :file, :hint => f.object.image.present? \
+          ? image_tag(f.object.image.url(:medium))
+          : content_tag(:span, "no image uploaded yet")
+      end
+
+      # Create a new dog status object by default. Test if empty to avoid creating a new one if form submit fails.
+      f.object.dog_statuses.new if f.object.dog_statuses.empty?
+      f.inputs "Dog Information", for: [:dog_statuses, f.object.dog_statuses.last] do |ds|
+        ds.input :status, as: :select, collection: DogStatus.statuses.keys
+        ds.input :guidelines, as: :text
+      end
+
+    # Create form for editing
+    else
+      f.inputs "Location Details" do
+        f.input :name
+        f.input :category, as: :select, collection: Location.categories.keys
+        f.input :animal_blurb
         f.input :latitude, :as => :number, :input_html => { :value => f.object.geolocation.y }
         f.input :longitude, :as => :number, :input_html => { :value => f.object.geolocation.x }
-      end
-      f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.url(:medium))
-    end
-
-    if f.object.new_record?
-      f.inputs "Dog Status" do
-        f.has_many :dog_statuses, allow_destroy: true do |ds|
-          ds.input :status, as: :select, collection: DogStatus.statuses.keys
-          ds.input :guidelines, as: :text
-        end
+        f.input :image, :as => :file, :hint => f.object.image.present? \
+          ? image_tag(f.object.image.url(:medium))
+          : content_tag(:span, "no image uploaded yet")
       end
     end
     f.actions
