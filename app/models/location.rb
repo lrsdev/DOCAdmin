@@ -9,10 +9,17 @@ class Location < ActiveRecord::Base
   validates :category, :presence => true
   validates :animal_blurb, :presence => true, length: { maximum: 140 }
   validates :geolocation, :presence => true
+  validate :at_least_one_dog_status
 
   enum category: [ :beach, :track, :park ]
 
   has_attached_file :image, :styles => { :medium => "640x360#", :thumb => "100x100#" }
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  private
+
+  def at_least_one_dog_status
+    errors.add(:dog_statuses, "Must have at least one dog status") if self.dog_statuses.empty?
+  end
 end
