@@ -36,6 +36,9 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  # Disable serving static files from /public by default
+  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   #
