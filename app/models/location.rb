@@ -20,6 +20,6 @@ class Location < ActiveRecord::Base
   private
 
   def at_least_one_dog_status
-    errors.add(:dog_statuses, "Must have at least one dog status") if self.dog_statuses.empty?
+    errors.add(:base, "Must have at least one dog status") if self.dog_statuses.empty?
   end
 end
