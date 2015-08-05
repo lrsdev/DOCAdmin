@@ -59,6 +59,11 @@ ActiveAdmin.register Location do
           ? image_tag(f.object.image.url(:medium))
           : content_tag(:span, "no image uploaded yet")
       end
+      f.has_many :dog_statuses do |ds|
+        ds.input :status, as: :select, collection: DogStatus.statuses.keys
+        ds.input :guidelines, as: :text
+      end
+
     end
     f.actions
   end
