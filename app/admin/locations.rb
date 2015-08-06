@@ -103,5 +103,6 @@ ActiveAdmin.register Location do
 end
 
 ActiveAdmin.register DogStatus do
+  actions :all, except: [:edit]
   belongs_to :location
 end
