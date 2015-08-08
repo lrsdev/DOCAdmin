@@ -1,9 +1,10 @@
 class Animal < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
-  validates :blurb, presence: true, length: { maximum: 140 }
-  validates :guidelines, presence: true, length: { maximum: 140 }
+  validates :blurb, presence: true
+  validates :guidelines, presence: true
   validates :target, presence: true
   validates :ext_url, presence: true
+  validates :image, presence: true
 
   has_many :reports
 

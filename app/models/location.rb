@@ -7,8 +7,9 @@ class Location < ActiveRecord::Base
   has_many :accesses
   validates :name, :presence => true
   validates :category, :presence => true
-  validates :animal_blurb, :presence => true, length: { maximum: 140 }
+  validates :animal_blurb, :presence => true
   validates :geolocation, :presence => true
+  validates :image, :presence => true
   validate :at_least_one_dog_status
 
   enum category: [ :beach, :track, :park ]
