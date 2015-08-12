@@ -62,14 +62,14 @@ Location.create(
                 animal_blurb: 'Although uncommon, you should pay specific attention to possible seals along the North Side',
                 image: open('http://www.chrisgin.com/images/seascapes/large/TunnelBeach_1095.jpg', "r"))
 
-Report.create(location_id: 1, geolocation: 'POINT(170.489735 -45.912665)', blurb: "Spotted Yellow-Eyed Penguin playing in the surf",
+Report.create(location_id: 6, geolocation: 'POINT(170.489735 -45.912665)', blurb: "Spotted Yellow-Eyed Penguin playing in the surf",
              image: open('http://d1k2jfc4wnfimc.cloudfront.net/assets/matakohe/images/contentfill.jpg', "r"),
              image_file_name: 'penguin.jpg',created_at: DateTime.now, animal_id: 1)
 
-Report.create(location_id: 1, geolocation: 'POINT(170.488179 -45.913587)', blurb: "Spotted Blue Penguin shore near Salt Water Pool",
+Report.create(location_id: 6, geolocation: 'POINT(170.488179 -45.913587)', blurb: "Spotted Blue Penguin shore near Salt Water Pool",
              image: open('http://d1k2jfc4wnfimc.cloudfront.net/assets/matakohe/images/contentfill.jpg', "r"),
              image_file_name: 'penguin.jpg',created_at: DateTime.now, animal_id: 2)
 
-Report.create(location_id: 2, geolocation: 'POINT(170.531367 -45.908496)', blurb: "Spotted Sea Lion near lookout, far North end of beach.",
+Report.create(location_id: 7, geolocation: 'POINT(170.531367 -45.908496)', blurb: "Spotted Sea Lion near lookout, far North end of beach.",
              image: open('https://animalblawg.files.wordpress.com/2010/11/the-california-sea-lion.jpg', "r"),
              image_file_name: 'sealion.jpg',created_at: DateTime.now, animal_id: 3)
