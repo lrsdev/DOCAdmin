@@ -30,7 +30,7 @@ ActiveAdmin.register Location do
   form do |f|
     f.inputs "Location Details" do
       f.input :name
-      f.input :active
+      f.input :active, as: :select
       f.input :category, as: :select, collection: Location.categories.keys
       f.input :animal_blurb
       if f.object.new_record?
