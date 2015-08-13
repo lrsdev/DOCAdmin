@@ -2,7 +2,7 @@ ActiveAdmin.register Location do
   filter :name
   filter :dog_statuses_status, label: 'Dog Status', as: :select, collection: DogStatus.statuses
 
-  permit_params :category, :name, :animal_blurb, :image, :latitude, :longitude,
+  permit_params :category, :name, :animal_blurb, :image, :latitude, :longitude, :active,
     dog_statuses_attributes: [:location_id, :status, :guidelines]
 
   # Converts lat/long form fields to geographic object before commiting object to database.
@@ -30,6 +30,7 @@ ActiveAdmin.register Location do
   form do |f|
     f.inputs "Location Details" do
       f.input :name
+      f.input :active
       f.input :category, as: :select, collection: Location.categories.keys
       f.input :animal_blurb
       if f.object.new_record?

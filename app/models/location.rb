@@ -10,6 +10,7 @@ class Location < ActiveRecord::Base
   validates :animal_blurb, :presence => true
   validates :geolocation, :presence => true
   validates :image, :presence => true
+  validates :active, :presence => true
   validate :at_least_one_dog_status
 
   enum category: [ :beach, :track, :park ]

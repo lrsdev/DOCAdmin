@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802091306) do
+ActiveRecord::Schema.define(version: 20150813005714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,16 +75,17 @@ ActiveRecord::Schema.define(version: 20150802091306) do
   add_index "dog_statuses", ["location_id"], name: "index_dog_statuses_on_location_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.datetime  "created_at",                                                                              null: false
-    t.datetime  "updated_at",                                                                              null: false
-    t.integer   "category",                                                                    default: 0, null: false
-    t.string    "name",                                                                                    null: false
-    t.text      "animal_blurb",                                                                            null: false
-    t.geography "geolocation",        limit: {:srid=>4326, :type=>"point", :geographic=>true},             null: false
+    t.datetime  "created_at",                                                                                 null: false
+    t.datetime  "updated_at",                                                                                 null: false
+    t.integer   "category",                                                                    default: 0,    null: false
+    t.string    "name",                                                                                       null: false
+    t.text      "animal_blurb",                                                                               null: false
+    t.geography "geolocation",        limit: {:srid=>4326, :type=>"point", :geographic=>true},                null: false
     t.string    "image_file_name"
     t.string    "image_content_type"
     t.integer   "image_file_size"
     t.datetime  "image_updated_at"
+    t.boolean   "active",                                                                      default: true, null: false
   end
 
   create_table "reports", force: :cascade do |t|
