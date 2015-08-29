@@ -1,5 +1,5 @@
 ActiveAdmin.register Location do
-  actions :all, except: [:delete]
+  actions :all, except: [:destroy]
   filter :name
   filter :dog_statuses_status, label: 'Dog Status', as: :select, collection: DogStatus.statuses
 
