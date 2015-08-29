@@ -1,4 +1,5 @@
 ActiveAdmin.register Location do
+  actions :all, except: [:delete]
   filter :name
   filter :dog_statuses_status, label: 'Dog Status', as: :select, collection: DogStatus.statuses
 
@@ -11,8 +12,9 @@ ActiveAdmin.register Location do
   end
 
   index do
-    column :category
     column :name
+    column :category
+    column :active
     column "Dog Status" do |location|
       location.dog_statuses.last.status
     end
