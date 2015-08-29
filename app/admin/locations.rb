@@ -11,6 +11,10 @@ ActiveAdmin.register Location do
     l.geolocation = RGeo::Geographic.spherical_factory(:srid => 4326).point(l.longitude, l.latitude)
   end
 
+  before_update do |l|
+    l.geolocation = RGeo::Geographic.spherical_factory(:srid => 4326).point(l.longitude, l.latitude)
+  end
+
   index do
     column :name
     column :category
