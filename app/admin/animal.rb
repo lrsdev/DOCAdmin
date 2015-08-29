@@ -1,4 +1,5 @@
 ActiveAdmin.register Animal do
+  actions :all, except: [:delete]
   filter :name
 
   permit_params :name, :blurb, :guidelines, :ext_url, :target, :image
