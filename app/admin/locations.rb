@@ -1,7 +1,7 @@
 ActiveAdmin.register Location do
   actions :all, except: [:destroy]
   filter :name
-  filter :dog_statuses_status, label: 'Dog Status', as: :select, collection: DogStatus.statuses
+  #filter :current_dog_status_status, label: 'Dog Status', as: :select, collection: DogStatus.statuses
 
   permit_params :category, :name, :animal_blurb, :image, :latitude, :longitude, :active,
     dog_statuses_attributes: [:location_id, :status, :guidelines]
@@ -23,7 +23,6 @@ ActiveAdmin.register Location do
     # standpoint. The default behaviour is to show
     current_status = Location.find(l.id).dog_statuses.last
     new_status = l.dog_statuses.last
-
     if(current_status.guidelines == new_status.guidelines and
        current_status.status == new_status.status)
       new_status.destroy
@@ -41,7 +40,7 @@ ActiveAdmin.register Location do
   end
 
   # Form. Conditionally add geolocation values to lat/long fields. Required to manipulate geolocations standard
-  # WKT output into something more editable.
+  # WKT output into seperately editable lat/long fields.
   form do |f|
     f.inputs "Location Details" do
       f.input :name
@@ -107,7 +106,9 @@ ActiveAdmin.register Location do
 
 end
 
+# 
 ActiveAdmin.register DogStatus do
   actions :all
   belongs_to :location
+  config.filters = false
 end
