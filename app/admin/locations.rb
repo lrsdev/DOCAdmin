@@ -48,13 +48,13 @@ ActiveAdmin.register Location do
     f.object.dog_statuses.new if f.object.new_record?
     f.inputs do
       f.has_many :dog_statuses, heading: 'Dog Details' do |ds|
-        if f.object.new_record? or ds.object.new_record?
+        if ds.object.new_record?
           ds.input :status, as: :select, collection: DogStatus.statuses.keys
           ds.input :guidelines, as: :text
         else
           ds.input :created_at, as: :string, :input_html => { :readonly=>true, :disabled=>true }
-          ds.input :status, as: :select, collection: DogStatus.statuses.keys
-          ds.input :guidelines, as: :string
+          ds.input :status, as: :select, collection: DogStatus.statuses.keys, :input_html => { :readonly=>true, :disabled=>true }
+          ds.input :guidelines, as: :string, :input_html => { :readonly=>true, :disabled=>true }
         end
       end
     end
