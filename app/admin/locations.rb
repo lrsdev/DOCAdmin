@@ -13,6 +13,21 @@ ActiveAdmin.register Location do
 
   before_update do |l|
     l.geolocation = RGeo::Geographic.spherical_factory(:srid => 4326).point(l.longitude, l.latitude)
+
+    # Check to see if new dog status matches the last stored status. Don't save it if it does.
+    # This is a work around that solves a problem where editing a location would create a new
+    # dog status even if it didn't change. This is because we're not using the default active
+    # admin behaviour for nested form attributes, and not allowing dog statuses to be mutable.
+    # This is to maintain a history of dog statuses for a location, without users having to be
+    # aware of this. Although this is a little hacky, it's a large improvement from the usability
+    # standpoint. The default behaviour is to show
+    current_status = Location.find(l.id).dog_statuses.last
+    new_status = l.dog_statuses.last
+
+    if(current_status.guidelines == new_status.guidelines and
+       current_status.status == new_status.status)
+      new_status.destroy
+    end
   end
 
   index do
@@ -23,12 +38,6 @@ ActiveAdmin.register Location do
       location.dog_statuses.last.status
     end
     actions 
-  end
-
-  sidebar "Dog Status", only: [:show, :delete] do
-    ul do
-      li link_to "Statuses", admin_location_dog_statuses_path(location)
-    end
   end
 
   # Form. Conditionally add geolocation values to lat/long fields. Required to manipulate geolocations standard
@@ -53,7 +62,7 @@ ActiveAdmin.register Location do
 
     # Create a new dog status object by default. Gets around the default active admin behaviour of adding
     # buttons to create a new status.
-    f.object.dog_statuses.new if f.object.dog_statuses.empty?
+    f.object.dog_statuses.new if f.object.dog_statuses.empty? 
     f.inputs "Dog Information", for: [:dog_statuses, f.object.dog_statuses.last] do |ds|
       ds.input :status, as: :select, collection: DogStatus.statuses.keys
       ds.input :guidelines, as: :text
@@ -72,6 +81,9 @@ ActiveAdmin.register Location do
       end
       row 'Current Dog Guidelines' do
         l.dog_statuses.last.guidelines
+      end
+      row 'Previous Dog Statuses' do
+        li link_to "Click to view all previous", admin_location_dog_statuses_path(location_id: l.id)
       end
       row :image do
         image_tag l.image.url(:medium)
@@ -96,6 +108,6 @@ ActiveAdmin.register Location do
 end
 
 ActiveAdmin.register DogStatus do
-  actions :all, except: [:edit]
+  actions :all
   belongs_to :location
 end
