@@ -3,12 +3,14 @@ class Location < ActiveRecord::Base
 
   has_many :reports, :dependent => :destroy
   has_many :dog_statuses, :dependent => :destroy
-  accepts_nested_attributes_for :dog_statuses
+  validates_presence_of :dog_statuses, :message => "At least one dog status is required"
+  accepts_nested_attributes_for :dog_statuses, allow_destroy: true
   validates :name, :presence => true
   validates :category, :presence => true
   validates :animal_blurb, :presence => true
   validates :geolocation, :presence => true
   validates :image, :presence => true
+  validates :dog_statuses, :presence => true
   validates :active, inclusion: { in: [true, false] }
 
   enum category: [ :beach, :track, :park ]
