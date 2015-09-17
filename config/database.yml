@@ -1,0 +1,32 @@
+production:
+  adapter: postgis
+  encoding: utf8
+  database: dogapp_pro
+  pool: 5
+  username: <%= ENV["POSTGRES_USERNAME"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  su_username: <%= ENV["POSTGRES_SU"] %>
+  su_password: <%= ENV["POSTGRES_SU_PASSWORD"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
+
+development:
+  adapter: postgis
+  encoding: utf8
+  database: dogapp_dev
+  pool: 5
+  username: <%= ENV["POSTGRES_USERNAME"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  su_username: <%= ENV["POSTGRES_SU"] %>
+  su_password: <%= ENV["POSTGRES_SU_PASSWORD"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
+
+test:
+  adapter: postgis
+  encoding: utf8
+  database: dogapp_test
+  pool: 5
+  username: <%= ENV["POSTGRES_USERNAME"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  su_username: <%= ENV["POSTGRES_SU"] %>
+  su_password: <%= ENV["POSTGRES_SU_PASSWORD"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
