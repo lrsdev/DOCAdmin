@@ -45,9 +45,9 @@ ActiveAdmin.register Location do
         ? image_tag(f.object.image.url(:medium))
         : content_tag(:span, "no image uploaded yet")
     end
-    f.object.dog_statuses.new if f.object.new_record?
+    #f.object.dog_statuses.new if f.object.new_record?
     f.inputs do
-      f.has_many :dog_statuses, heading: 'Dog Details' do |ds|
+        f.has_many :dog_statuses, heading: 'Dog Details' do |ds|
         if ds.object.new_record?
           ds.input :status, as: :select, collection: DogStatus.statuses.keys
           ds.input :guidelines, as: :text
