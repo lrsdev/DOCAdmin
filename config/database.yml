@@ -1,7 +1,7 @@
 production:
   adapter: postgis
   encoding: utf8
-  database: <%= ENV["POSTGRES_DATABASE"] %>
+  database: dogapp_pro
   pool: 5
   username: <%= ENV["POSTGRES_USERNAME"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
@@ -12,7 +12,7 @@ production:
 development:
   adapter: postgis
   encoding: utf8
-  database: <%= ENV["POSTGRES_DATABASE"] %>
+  database: dogapp_dev
   pool: 5
   username: <%= ENV["POSTGRES_USERNAME"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
@@ -23,7 +23,7 @@ development:
 test:
   adapter: postgis
   encoding: utf8
-  database: <%= ENV["POSTGRES_DATABASE"] %>
+  database: dogapp_test
   pool: 5
   username: <%= ENV["POSTGRES_USERNAME"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
