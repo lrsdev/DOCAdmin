@@ -32,7 +32,7 @@ ADD . /home/app/docadmin
 RUN chown -R app:app /home/app/docadmin
 
 WORKDIR /home/app/docadmin
-RUN sudo -u app bundle install --deployment --without development test
+RUN sudo -u app bundle install --deployment
 
 # Enable Nginx and Passenger
 RUN rm -f /etc/service/nginx/down
