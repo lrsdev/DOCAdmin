@@ -6,7 +6,7 @@ class CreateAnimals < ActiveRecord::Migration
       t.text :guidelines
       t.string :ext_url
       t.timestamps null: false
-      t.boolean :target, null: false, default: true
+      t.boolean :active, null: false, default: true
     end
   end
 end
