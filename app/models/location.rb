@@ -7,6 +7,7 @@ class Location < ActiveRecord::Base
   accepts_nested_attributes_for :dog_statuses, allow_destroy: true
   validates :name, :presence => true
   validates :category, :presence => true
+  validates :region, :presence => true
   validates :animal_blurb, :presence => true
   validates :geolocation, :presence => true
   validates :image, :presence => true
@@ -14,7 +15,8 @@ class Location < ActiveRecord::Base
   validates :active, inclusion: { in: [true, false] }
 
   enum category: [ :beach, :track, :park ]
-  enum region: [ :Otago, :Southland, :Canterbury, :Westland, :Marlborough ]
+  enum region: [ "Southland", "Otago", "Canterbury", "Westland", "Marlborough", "Nelson", "Wellington",
+    "Hawke's Bay", "New Plymouth", "Auckland"]
 
   has_attached_file :image, :styles => { :medium => "640x360#", :thumb => "100x100#" }
   validates_attachment_presence :image
