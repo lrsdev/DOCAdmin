@@ -1,19 +1,9 @@
-production:
-  adapter: postgis
-  encoding: utf8
-  database: dogbeaches
-  pool: 5
-  username: <%= ENV["POSTGRES_USERNAME"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  su_username: <%= ENV["POSTGRES_SU"] %>
-  su_password: <%= ENV["POSTGRES_SU_PASSWORD"] %>
-  host: <%= ENV["POSTGRES_HOST"] %>
+## All database credentials should be provided by environment variables.
 
-development:
+development: &default
   adapter: postgis
   encoding: utf8
   database: dogbeaches_dev
-  pool: 5
   username: <%= ENV["POSTGRES_USERNAME"] %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
   su_username: <%= ENV["POSTGRES_SU"] %>
@@ -21,12 +11,13 @@ development:
   host: <%= ENV["POSTGRES_HOST"] %>
 
 test:
+  <<: *default
   adapter: postgis
   encoding: utf8
   database: dogbeaches_test
-  pool: 5
-  username: <%= ENV["POSTGRES_USERNAME"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
-  su_username: <%= ENV["POSTGRES_SU"] %>
-  su_password: <%= ENV["POSTGRES_SU_PASSWORD"] %>
-  host: <%= ENV["POSTGRES_HOST"] %>
+
+production:
+  <<: *default
+  adapter: postgis
+  encoding: utf8
+  database: dogbeaches
