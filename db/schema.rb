@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150813005714) do
     t.datetime  "created_at",                                                                                 null: false
     t.datetime  "updated_at",                                                                                 null: false
     t.integer   "category",                                                                    default: 0,    null: false
+    t.integer   "region",                                                                      default: 0,    null: false
     t.string    "name",                                                                                       null: false
     t.text      "animal_blurb",                                                                               null: false
     t.geography "geolocation",        limit: {:srid=>4326, :type=>"point", :geographic=>true},                null: false
@@ -91,10 +92,10 @@ ActiveRecord::Schema.define(version: 20150813005714) do
   create_table "reports", force: :cascade do |t|
     t.integer   "location_id"
     t.integer   "animal_id"
-    t.text      "blurb"
-    t.geography "geolocation",        limit: {:srid=>4326, :type=>"point", :geographic=>true}
-    t.datetime  "created_at",                                                                  null: false
-    t.datetime  "updated_at",                                                                  null: false
+    t.text      "blurb",                                                                       default: "No description"
+    t.geography "geolocation",        limit: {:srid=>4326, :type=>"point", :geographic=>true},                            null: false
+    t.datetime  "created_at",                                                                                             null: false
+    t.datetime  "updated_at",                                                                                             null: false
     t.string    "image_file_name"
     t.string    "image_content_type"
     t.integer   "image_file_size"

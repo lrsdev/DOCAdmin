@@ -14,6 +14,7 @@ class Location < ActiveRecord::Base
   validates :active, inclusion: { in: [true, false] }
 
   enum category: [ :beach, :track, :park ]
+  enum region: [ :Otago, :Southland, :Canterbury, :Westland, :Marlborough ]
 
   has_attached_file :image, :styles => { :medium => "640x360#", :thumb => "100x100#" }
   validates_attachment_presence :image
