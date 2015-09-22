@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20150813005714) do
     t.string   "ext_url"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.boolean  "target",             default: true, null: false
+    t.boolean  "active",             default: true, null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20150813005714) do
     t.datetime  "created_at",                                                                                 null: false
     t.datetime  "updated_at",                                                                                 null: false
     t.integer   "category",                                                                    default: 0,    null: false
-    t.integer   "region",                                                                      default: 0,    null: false
+    t.integer   "region",                                                                                     null: false
     t.string    "name",                                                                                       null: false
     t.text      "animal_blurb",                                                                               null: false
     t.geography "geolocation",        limit: {:srid=>4326, :type=>"point", :geographic=>true},                null: false
