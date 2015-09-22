@@ -6,7 +6,7 @@ ActiveAdmin.register Animal do
 
   index do
     column :name
-    column :target
+    column :active
     column :created_at
     actions
   end
@@ -17,7 +17,7 @@ ActiveAdmin.register Animal do
       f.input :blurb
       f.input :guidelines
       f.input :ext_url
-      f.input :target, as: :select
+      f.input :active, as: :select
       f.input :image, :as => :file, :hint => f.object.image.present? \
         ? image_tag(f.object.image.url(:medium))
         : content_tag(:span, "no image uploaded")
@@ -31,7 +31,7 @@ ActiveAdmin.register Animal do
       row :blurb
       row :guidelines
       row :ext_url
-      row :target
+      row :active
       row :image do
         image_tag a.image.url(:medium)
       end
