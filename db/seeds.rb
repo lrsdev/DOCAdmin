@@ -180,3 +180,27 @@ Location.create(name: "Warrington Beach",
                 image: open("./db/images/warrington.jpg", "r"),
                 active: true,
                 dog_statuses: [DogStatus.new(status: 0, guidelines: "If this is in production, update it")])
+
+Animal.create(name: "Sea Lion", 
+              blurb: "The New Zealand sea lion has a blunt nose and short whiskers. Mature males are brown to black in colour with well-developed manes reaching to the shoulders. Females are lighter in colour, predominantly creamy grey with darker pigmentation around their flippers.",
+              guidelines: "Some guidelines", 
+              ext_url: "http://www.doc.govt.nz/nature/native-animals/marine-mammals/seals/new-zealand-sea-lion/",
+              image: open("./db/sealion.jpg", "r"))
+
+Animal.create(name: "Fur Seal",
+              blurb: "Fur Seals and sea lions are distinguished from other seals by their external ear flaps and hind flippers which rotate forward, allowing them to move quickly on land. This pointy-nosed seal has long pale whiskers and a body covered with two layers of fur. Their coat is dark grey-brown on the back, and lighter below; when wet kekeno look almost black. In some animals the longer upper hairs have white tips which give the animal a silvery appearance",
+              guidelines: "Some guidelines",
+              ext_url: "http://www.doc.govt.nz/nature/native-animals/marine-mammals/seals/nz-fur-seal/",
+              image: open("./db/furseal.jpg"))
+
+Animal.create(name: "Leopard Seal",
+              blurb: "The leopard seal (Hydrurga leptonyx) is built for speed. They are easily identified by their long slim body, comparatively large fore-flippers. The disproportionately large head, massive jaws, impressive teeth and tremendous gape give it a snake-like appearance.",
+              guidelines: "Some guidelines",
+              ext_url: "http://www.doc.govt.nz/nature/native-animals/marine-mammals/seals/leopard-seal/",
+              image: open("./db/leopardseal.jpg"))
+
+Animal.create(name: "Yellow-Eyed Penguin",
+              blurb: "The yellow-eyed penguin is named for its yellow iris and distinctive yellow headband. Adults are grey-blue in colour, with a snow-white belly and pink feet.",
+              guidelines: "Some guidelines",
+              ext_url: "http://www.doc.govt.nz/nature/native-animals/birds/birds-a-z/penguins/yellow-eyed-penguin-hoiho/",
+              image: open("./db/yelloweyed.jpg"))
